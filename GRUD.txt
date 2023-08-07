@@ -1,0 +1,94 @@
+POST
+
+/task
+POST-> cria nova tarefa.
+body:{
+	descrybe:	string ,
+	deadline:	number ,
+	id_user : 	number->user
+}
+response:{id:number}
+
+
+/user
+POST-> cria novo user
+body:{
+	name:	string ,
+	function:	string ,
+}
+response:{id:number}
+
+________________________________________|
+					|
+GET LISTAGEM
+
+
+/task
+GET/LISTAGEM-> return all task.
+response:[
+	{...task1},
+	{...task2},
+//... = attributes(desc,user,deadline) of task
+]
+
+
+/task/<id_task>
+GET-> list one task.
+response:{
+	...task1
+}
+
+
+/user
+GET/LISTAGEM-> return all task.
+response:[
+	{...user1},
+	{...user2},
+//... = attributes(name,func) of user, array[]
+]
+
+
+/user/<id_user>
+GET-> list one user.
+response:{
+	...task1
+//... = attributes(name,func) of user
+}
+
+________________________________________|
+					|
+PUT
+
+
+/task/<id_task>
+PUT-> edit task.
+body:{
+	descrybe:	string ,
+	deadline:	number ,
+	id_user : 	number->user
+
+}
+response:{id:number}
+
+
+/user/<id_user>
+PUT-> edit user.
+body:{
+	name	:	string ,
+	function:	string ,
+}
+response:{id:number}
+
+________________________________________|
+					|
+DELETE
+
+
+/task/<id_task>
+DELETE> delete one task.
+response:{id:number}
+
+
+/user/<id_user>
+DELETE> delete one user.
+response:{id:number}
