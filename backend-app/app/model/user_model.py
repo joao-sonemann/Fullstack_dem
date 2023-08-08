@@ -4,10 +4,9 @@ class User(db.Model):
 
     __tablename__= "user"
 
-    id = db.Column(id.Integer, primary_key=True, autoincrement=True)
-
-    name = db.Column(db.string(255), unique=True, nullable=False)
-    function = db.Column(db.string(255), nullable=False)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(255), unique=True, nullable=False)
+    function = db.Column(db.String(255), nullable=False)
     
     task = db.relationship('task', back_populates='user', uselist=True)
 
