@@ -2,26 +2,28 @@ from flask import request
 from flask_restx import Resource
 
 from app.util.dto import TaskDto
-# from app.service.categoria.service import save_new_user, get_all_users, get_a_user
+from app.service.task_service import create_task, list_all_task, edit_task, delete_task
 
 api = TaskDto.api
-# _user = UserDto.user
+_task = TaskDto.task
 
 @api.route('/')
 class Task(Resource):
-
     def post(self):
-        pass
+        data = request.json
+        return create_task(data)
 
+    @api.marshal_list_with(_task, envelope='data')
     def get(self):
-        pass
+        return list_all_task()
 
 
 @api.route('/<id_task>')
-@api.param('id_task', 'id da task')
-class UserComId(Resource):
+@api.param('id_task', 'id task')
+class TaskComId(Resource):
     def put(self, id_task):
-        pass
+        data = request.json
+        return edit_task(id_task, data)
 
     def delete(self, id_task):
-        pass
+        return delete_task(id_task)

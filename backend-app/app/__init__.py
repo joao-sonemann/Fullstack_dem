@@ -9,7 +9,6 @@ from app.controller.task_controller import api as task_ns
 
 class DevelopmentConfig():
     SECRET_KEY = os.getenv('SECRET_KEY', 'my_precious_secret_key')
-   
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(os.path.abspath(os.path.dirname(__file__)), 'flask_boilerplate_main.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -22,6 +21,7 @@ def create_app():
     migrate.init_app(app, db)
     api.init_app(app)
 
-    api.add_namespace(user_ns, path="/user")
     api.add_namespace(task_ns, path="/task")
+    api.add_namespace(user_ns, path="/user")
+
     return app

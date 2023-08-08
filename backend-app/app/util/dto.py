@@ -3,17 +3,17 @@ from flask_restx import Namespace, fields
 class UserDto:
     api = Namespace('user', description='user info')
     user = api.model('user', {
-        'name': fields.String(required=True, description='name user'),
-        'function': fields.String(required=True, description='function of user'),
-        'id': fields.integer(required=True),
+        'name': fields.String(required=True),
+        'function': fields.String(required=True),
+        'id': fields.Integer(),
     })
 
 class TaskDto:
     api = Namespace('task', description='task info')
     task = api.model('task', {
-        'id': fields.integer(),
-        'descrybe': fields.String(required=True, description='task descrition'),
-        'deadline': fields.integer(required=True, description='time to do'),
-        'id_user': fields.integer()
+        'id': fields.Integer(),
+        'descrybe': fields.String(required=True),
+        'deadline': fields.Integer(required=True),
+        'id_user': fields.Integer(required=True)
     })
 
